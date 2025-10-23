@@ -1,0 +1,191 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║                          GUIDE DE DÉMARRAGE RAPIDE                       ║
+║                         Exercices Asset Engine                           ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+🚀 POUR COMMENCER IMMÉDIATEMENT
+════════════════════════════════════════════════════════════════════════════
+
+1. COMPILER TOUS LES EXERCICES:
+   bash compile_all.sh
+
+   OU manuellement:
+   g++ -o hexview ExoJ1_HexView.cpp
+   g++ -o safereader ExoJ2_SafeReader.cpp
+   g++ -o cryptfile ExoJ3_CryptFile.cpp
+
+────────────────────────────────────────────────────────────────────────────
+
+2. TEST RAPIDE JOUR 1 (HexView):
+
+   # Créer un fichier de test
+   echo "Hello World Binary!" > test.txt
+
+   # Lancer HexView
+   ./hexview test.txt
+
+   # Commandes:
+   d           # Afficher dump
+   m 0 FF      # Modifier premier octet
+   s out.bin   # Sauvegarder
+   q           # Quitter
+
+────────────────────────────────────────────────────────────────────────────
+
+3. TEST RAPIDE JOUR 2 (SafeReader):
+
+   # Lancer le programme
+   ./safereader
+
+   # Menu: 1 (Générer)
+   Nom: test.safe
+   Contenu: Ceci est un test SafeReader!
+
+   # Menu: 2 (Valider)
+   Fichier: test.safe
+   => Doit afficher "FICHIER VALIDE"
+
+   # Menu: 3 (Corrompre)
+   Source: test.safe
+   Sortie: bad.safe
+   Mode: 4
+
+   # Menu: 2 (Valider le fichier corrompu)
+   Fichier: bad.safe
+   => Doit détecter "CHECKSUM INVALIDE"
+
+────────────────────────────────────────────────────────────────────────────
+
+4. TEST RAPIDE JOUR 3 (CryptFile):
+
+   # Créer fichier secret
+   echo "Message secret à chiffrer!" > secret.txt
+
+   # Lancer CryptFile
+   ./cryptfile
+
+   # Menu: 1 (Chiffrer)
+   Source: secret.txt
+   Sortie: secret.enc
+   Clé: password123
+
+   # Menu: 2 (Déchiffrer)
+   Source: secret.enc
+   Sortie: decrypted.txt
+   Clé: password123
+
+   # Vérifier
+   cat decrypted.txt
+   => Doit afficher le message original
+
+   # Menu: 3 (Test symétrie)
+   Fichier: secret.txt
+   Clé: password123
+   => Doit confirmer symétrie OK
+
+════════════════════════════════════════════════════════════════════════════
+
+💡 CONSEILS D'ÉTUDE
+════════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 1: Comprendre la structure
+---------------------------------
+Ouvre chaque .cpp et identifie:
+  ✓ Les structures de données (typedef struct)
+  ✓ Les fonctions principales
+  ✓ Le flux du programme (main → fonctions)
+
+ÉTAPE 2: Tracer le code mentalement
+------------------------------------
+Pour chaque fonction:
+  ✓ Qu'est-ce qu'elle reçoit en entrée?
+  ✓ Que fait-elle exactement?
+  ✓ Qu'est-ce qu'elle retourne?
+
+ÉTAPE 3: Modifier et expérimenter
+----------------------------------
+  ✓ Ajoute des printf() pour voir les valeurs
+  ✓ Change les constantes (taille buffer, etc.)
+  ✓ Teste des cas limites (fichier vide, énorme, etc.)
+  ✓ Casse volontairement le code pour voir les erreurs
+
+ÉTAPE 4: Créer tes variantes
+-----------------------------
+  ✓ Change l'algorithme de checksum
+  ✓ Modifie le format hexadécimal
+  ✓ Implémente un chiffrement différent
+  ✓ Ajoute de nouvelles fonctionnalités
+
+════════════════════════════════════════════════════════════════════════════
+
+🎓 CONCEPTS À MAÎTRISER PAR EXERCICE
+════════════════════════════════════════════════════════════════════════════
+
+JOUR 1 - HexView:
+  [ ] fopen() en mode "rb" (read binary)
+  [ ] fread() pour lire des octets
+  [ ] malloc() / free() pour gérer la mémoire
+  [ ] Conversion int → hex avec printf("%02x")
+  [ ] Différence entre affichage hex et ASCII
+
+JOUR 2 - SafeReader:
+  [ ] Structures binaires (headers)
+  [ ] Calcul de checksum (XOR + rotation)
+  [ ] Validation de données (ne jamais faire confiance)
+  [ ] Détection de corruptions
+  [ ] Gestion d'erreurs systématique
+
+JOUR 3 - CryptFile:
+  [ ] Opérations bit-à-bit (XOR, rotation)
+  [ ] Propriété réversible du XOR
+  [ ] Lecture/écriture par blocs (buffering)
+  [ ] Répétition de clé
+  [ ] Test de symétrie
+
+════════════════════════════════════════════════════════════════════════════
+
+🔧 DÉPANNAGE RAPIDE
+════════════════════════════════════════════════════════════════════════════
+
+ERREUR: "Impossible d'ouvrir le fichier"
+  → Vérifie que le chemin est correct
+  → Vérifie les permissions du fichier
+  → Utilise "./" pour les fichiers locaux
+
+ERREUR: "Pas assez de mémoire"
+  → Le fichier est peut-être trop gros
+  → Vérifie avec "ls -lh fichier.bin"
+
+ERREUR: Compilation échoue
+  → Vérifie que g++ est installé: g++ --version
+  → Utilise: g++ -std=c++11 ExoXX.cpp -o exo
+
+Le programme plante sans message
+  → Compile avec debug: g++ -g ExoXX.cpp -o exo
+  → Lance avec gdb: gdb ./exo
+
+════════════════════════════════════════════════════════════════════════════
+
+📖 LIRE ENSUITE
+════════════════════════════════════════════════════════════════════════════
+
+Pour des explications détaillées, ouvre README.txt qui contient:
+  • Explication complète de chaque exercice
+  • Scénarios de test avancés
+  • Concepts théoriques approfondis
+  • Ressources pour aller plus loin
+  • Checklist d'apprentissage
+
+════════════════════════════════════════════════════════════════════════════
+
+🎯 BON APPRENTISSAGE!
+════════════════════════════════════════════════════════════════════════════
+
+Tu as maintenant 3 programmes complets pour apprendre la manipulation de
+fichiers binaires en C classique. Prends ton temps, expérimente, et surtout:
+
+  ⚡ CODE, TESTE, CASSE, RECOMMENCE! ⚡
+
+C'est en faisant qu'on apprend.
+
+════════════════════════════════════════════════════════════════════════════
