@@ -1,0 +1,123 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║               NOTES DE COMPILATION - ExoComplet                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+📌 CORRECTION APPLIQUÉE
+════════════════════════════════════════════════════════════════════════════
+
+Tous les fichiers .cpp incluent maintenant:
+
+    #define _CRT_SECURE_NO_WARNINGS
+
+Cette directive désactive les warnings Microsoft Visual Studio concernant:
+- fopen() → fopen_s()
+- sscanf() → sscanf_s()
+- strncpy() → strncpy_s()
+- fread(), fwrite(), etc.
+
+POURQUOI?
+---------
+Ce projet utilise volontairement les fonctions C standard classiques
+pour l'apprentissage. Les fonctions _s sont des extensions Microsoft non
+portables. Le code reste sûr car:
+
+1. HexView : Contrôle de taille avec sizeof() sur tous les buffers
+2. SafeReader : Validation stricte avec malloc() et vérification des retours
+3. CryptFile : Lecture par blocs avec taille fixe définie
+
+════════════════════════════════════════════════════════════════════════════
+
+🔨 COMPILATION VISUAL STUDIO
+════════════════════════════════════════════════════════════════════════════
+
+✅ CONFIGURATION RECOMMANDÉE:
+
+1. Ouvrir ExoComplet.sln
+2. Configuration: Debug | x64 (pour l'apprentissage)
+3. Compiler: F7 ou Ctrl+Shift+B
+4. Exécuter: Ctrl+F5 (console reste ouverte)
+
+✅ LES WARNINGS SUIVANTS ONT ÉTÉ RÉSOLUS:
+
+C4996: 'fopen': This function or variable may be unsafe
+C4996: 'sscanf': This function or variable may be unsafe
+C4996: 'strncpy': This function or variable may be unsafe
+C4996: 'strcpy': This function or variable may be unsafe
+
+Résultat attendu: ✅ COMPILATION SANS WARNINGS
+
+════════════════════════════════════════════════════════════════════════════
+
+🐧 COMPILATION GCC/G++ (Linux/WSL)
+════════════════════════════════════════════════════════════════════════════
+
+Les fichiers compilent également sans warnings avec g++:
+
+    g++ -std=c++11 -Wall -Wextra -O2 ExoJ1_HexView.cpp -o hexview
+    g++ -std=c++11 -Wall -Wextra -O2 ExoJ2_SafeReader.cpp -o safereader
+    g++ -std=c++11 -Wall -Wextra -O2 ExoJ3_CryptFile.cpp -o cryptfile
+
+OU utiliser le script:
+
+    bash compile_all.sh
+
+Résultat attendu: ✅ COMPILATION SANS WARNINGS
+
+════════════════════════════════════════════════════════════════════════════
+
+🔍 FICHIERS MODIFIÉS
+════════════════════════════════════════════════════════════════════════════
+
+Racine (pour g++):
+  ✅ ExoJ1_HexView.cpp      → #define _CRT_SECURE_NO_WARNINGS ajouté
+  ✅ ExoJ2_SafeReader.cpp    → #define _CRT_SECURE_NO_WARNINGS ajouté
+  ✅ ExoJ3_CryptFile.cpp     → #define _CRT_SECURE_NO_WARNINGS ajouté
+
+Sous-dossiers (pour Visual Studio):
+  ✅ ExoJ1_HexView/ExoJ1_HexView.cpp      → Corrigé
+  ✅ ExoJ2_SafeReader/ExoJ2_SafeReader.cpp → Corrigé
+  ✅ ExoJ3_CryptFile/ExoJ3_CryptFile.cpp   → Corrigé
+
+════════════════════════════════════════════════════════════════════════════
+
+💡 NOTE PÉDAGOGIQUE
+════════════════════════════════════════════════════════════════════════════
+
+Les fonctions _s (secure) de Microsoft ne sont PAS standard C/C++.
+Pour un code portable qui compile sur:
+  - Windows (Visual Studio, MinGW)
+  - Linux (gcc, g++, clang)
+  - macOS (clang)
+
+Il est préférable d'utiliser les fonctions standard avec validation manuelle.
+
+C'est exactement ce que font ces exercices:
+  ✓ Vérification de NULL après fopen()
+  ✓ Vérification du retour de fread()/fwrite()
+  ✓ Utilisation de sizeof() pour les buffers
+  ✓ Utilisation de strncpy() avec '\0' forcé manuellement
+
+════════════════════════════════════════════════════════════════════════════
+
+✅ STATUT FINAL
+════════════════════════════════════════════════════════════════════════════
+
+[✓] Tous les fichiers .cpp corrigés
+[✓] Compile sans warnings sous Visual Studio
+[✓] Compile sans warnings sous g++
+[✓] Solution .sln fonctionnelle
+[✓] Projets .vcxproj configurés
+[✓] Code C classique pur maintenu
+[✓] Portabilité préservée
+
+════════════════════════════════════════════════════════════════════════════
+
+🚀 PRÊT À COMPILER!
+════════════════════════════════════════════════════════════════════════════
+
+Tu peux maintenant ouvrir ExoComplet.sln dans Visual Studio
+et compiler sans warnings.
+
+Pour plus d'infos: Voir VISUAL_STUDIO.txt
+
+════════════════════════════════════════════════════════════════════════════
