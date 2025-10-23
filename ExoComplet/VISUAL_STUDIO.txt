@@ -1,0 +1,212 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║           GUIDE UTILISATION VISUAL STUDIO - ExoComplet                   ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+🎯 OUVRIR LA SOLUTION
+════════════════════════════════════════════════════════════════════════════
+
+1. Double-cliquer sur "ExoComplet.sln"
+   OU
+   Ouvrir Visual Studio → Fichier → Ouvrir → Projet/Solution
+   → Sélectionner "ExoComplet.sln"
+
+2. L'Explorateur de solutions affichera 3 projets:
+   📁 ExoJ1_HexView      (Jour 1 - Visualiseur hexadécimal)
+   📁 ExoJ2_SafeReader   (Jour 2 - Lecteur sécurisé)
+   📁 ExoJ3_CryptFile    (Jour 3 - Chiffrement)
+
+════════════════════════════════════════════════════════════════════════════
+
+🔧 COMPILER UN PROJET
+════════════════════════════════════════════════════════════════════════════
+
+MÉTHODE 1 : Compiler un seul projet
+------------------------------------
+1. Clic droit sur le projet (ex: ExoJ1_HexView)
+2. "Définir comme projet de démarrage"
+3. Appuyer sur F7 ou Générer → Générer la solution
+4. L'exécutable sera dans:
+   ExoComplet\ExoJ1_HexView\x64\Debug\ExoJ1_HexView.exe
+
+MÉTHODE 2 : Compiler tous les projets
+--------------------------------------
+1. Générer → Générer la solution (ou Ctrl+Shift+B)
+2. Les 3 exécutables seront créés simultanément
+
+════════════════════════════════════════════════════════════════════════════
+
+▶️ EXÉCUTER UN PROJET
+════════════════════════════════════════════════════════════════════════════
+
+1. Clic droit sur le projet souhaité
+2. "Définir comme projet de démarrage"
+3. Appuyer sur F5 (avec débogueur) ou Ctrl+F5 (sans débogueur)
+
+IMPORTANT: Les programmes nécessitent des arguments ou interagissent en console
+           Utiliser Ctrl+F5 pour voir la sortie console correctement
+
+════════════════════════════════════════════════════════════════════════════
+
+🐛 DÉBOGUER UN PROJET
+════════════════════════════════════════════════════════════════════════════
+
+1. Ouvrir le fichier .cpp du projet
+2. Cliquer dans la marge gauche pour ajouter un point d'arrêt (breakpoint)
+3. Définir le projet comme projet de démarrage
+4. Appuyer sur F5
+5. Le programme s'arrêtera au breakpoint
+
+Touches utiles en débogage:
+  F5  - Continuer
+  F10 - Pas à pas principal (Step Over)
+  F11 - Pas à pas détaillé (Step Into)
+  F9  - Ajouter/Retirer breakpoint
+
+════════════════════════════════════════════════════════════════════════════
+
+⚙️ CONFIGURATIONS
+════════════════════════════════════════════════════════════════════════════
+
+Visual Studio propose 2 configurations principales:
+
+DEBUG (par défaut)
+------------------
+- Optimisations désactivées
+- Informations de débogage complètes
+- Exécutable plus gros et plus lent
+- Idéal pour l'apprentissage et le débogage
+
+RELEASE
+-------
+- Optimisations activées (code plus rapide)
+- Moins d'informations de débogage
+- Exécutable plus petit
+- Pour la distribution finale
+
+Pour changer: Menu déroulant en haut → Debug ou Release
+
+════════════════════════════════════════════════════════════════════════════
+
+📂 STRUCTURE DES DOSSIERS
+════════════════════════════════════════════════════════════════════════════
+
+ExoComplet/
+├── ExoComplet.sln                 ← Fichier solution (ouvrir celui-ci)
+│
+├── ExoJ1_HexView/
+│   ├── ExoJ1_HexView.vcxproj     ← Fichier projet
+│   ├── ExoJ1_HexView.cpp         ← Code source
+│   └── x64/Debug/                ← Exécutables compilés (créé automatiquement)
+│
+├── ExoJ2_SafeReader/
+│   ├── ExoJ2_SafeReader.vcxproj
+│   ├── ExoJ2_SafeReader.cpp
+│   └── x64/Debug/
+│
+├── ExoJ3_CryptFile/
+│   ├── ExoJ3_CryptFile.vcxproj
+│   ├── ExoJ3_CryptFile.cpp
+│   └── x64/Debug/
+│
+├── README.txt                     ← Documentation complète
+├── QUICKSTART.txt                 ← Guide rapide
+└── VISUAL_STUDIO.txt             ← Ce fichier
+
+════════════════════════════════════════════════════════════════════════════
+
+🚨 PROBLÈMES COURANTS
+════════════════════════════════════════════════════════════════════════════
+
+PROBLÈME: "La solution n'a pas pu être ouverte"
+SOLUTION: Vérifier que Visual Studio 2022 (ou 2019) est installé
+          Si version plus ancienne: clic droit sur .sln → "Ouvrir avec"
+
+PROBLÈME: "PlatformToolset v143 non trouvé"
+SOLUTION: 1. Clic droit sur le projet → Propriétés
+          2. Général → Ensemble d'outils de plateforme
+          3. Choisir v142 (VS2019) ou v141 (VS2017)
+
+PROBLÈME: "Windows SDK non trouvé"
+SOLUTION: Dans Visual Studio Installer, installer
+          "SDK Windows 10" ou "SDK Windows 11"
+
+PROBLÈME: La console se ferme immédiatement
+SOLUTION: Utiliser Ctrl+F5 au lieu de F5
+          OU ajouter system("pause"); avant return 0;
+
+PROBLÈME: Caractères bizarres dans la console (╔═╗)
+SOLUTION: C'est normal, ce sont des caractères UTF-8 pour l'interface
+          Si illisibles: chcp 65001 dans la console
+
+════════════════════════════════════════════════════════════════════════════
+
+💡 CONSEILS POUR L'APPRENTISSAGE
+════════════════════════════════════════════════════════════════════════════
+
+1. EXPLORER LE CODE
+   → Double-cliquer sur un .cpp pour l'ouvrir
+   → Utiliser Ctrl+F pour chercher une fonction
+   → Ctrl+Clic sur une fonction pour aller à sa définition
+
+2. MODIFIER ET TESTER
+   → Faire une modification
+   → F7 pour compiler
+   → Ctrl+F5 pour exécuter
+   → Observer le résultat
+
+3. DÉBOGUER POUR COMPRENDRE
+   → Mettre des breakpoints dans les fonctions clés
+   → F5 pour lancer en mode debug
+   → F10 pour avancer ligne par ligne
+   → Survoler les variables pour voir leurs valeurs
+
+4. COMPARER LES 3 EXERCICES
+   → Ouvrir les 3 fichiers .cpp côte à côte
+   → Comparer les approches (HexView → SafeReader → CryptFile)
+   → Observer la progression de complexité
+
+════════════════════════════════════════════════════════════════════════════
+
+📚 POUR ALLER PLUS LOIN
+════════════════════════════════════════════════════════════════════════════
+
+PERSONNALISER L'IDE:
+- Outils → Options → Environnement → Polices et couleurs
+- Thème sombre: Outils → Options → Environnement → Général
+
+RACCOURCIS UTILES:
+- Ctrl+K, Ctrl+D : Formater le code
+- Ctrl+K, Ctrl+C : Commenter
+- Ctrl+K, Ctrl+U : Décommenter
+- F12 : Aller à la définition
+- Ctrl+- : Naviguer en arrière
+
+ANALYSE DE CODE:
+- Analyse → Exécuter l'analyse du code
+- Détecte les erreurs potentielles et suggestions
+
+════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST PREMIÈRE UTILISATION
+════════════════════════════════════════════════════════════════════════════
+
+[ ] Double-cliquer sur ExoComplet.sln
+[ ] Vérifier que les 3 projets sont visibles dans l'Explorateur de solutions
+[ ] Compiler ExoJ1_HexView (F7)
+[ ] Exécuter ExoJ1_HexView (Ctrl+F5)
+[ ] Tester les 3 projets un par un
+[ ] Mettre un breakpoint et déboguer (F5)
+
+Si tout fonctionne, tu es prêt à coder! 🚀
+
+════════════════════════════════════════════════════════════════════════════
+
+📞 BESOIN D'AIDE?
+════════════════════════════════════════════════════════════════════════════
+
+Consulte dans l'ordre:
+1. README.txt        - Documentation complète des exercices
+2. QUICKSTART.txt    - Tests rapides sans Visual Studio
+3. Ce fichier        - Utilisation de Visual Studio
+
+════════════════════════════════════════════════════════════════════════════
